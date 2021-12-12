@@ -1,13 +1,10 @@
-import React, { useReducer, useState } from 'react'
+import React, { useState } from 'react'
 import { calculatorReducer } from '../reducer/calculatorReducer';
 import './style.css'
 
 export const CalculatorApp = () => {
 
     
-
-    const [state, dispatch] = useReducer(calculatorReducer, initialState)
-
     const numbers = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
     const operators = ['.', '=', '/', '*', '-', '+', 'C', 'AC'];
 
@@ -19,15 +16,6 @@ export const CalculatorApp = () => {
     
     const currentNumber = (array) =>  parseInt(array.join(''));
     
-    const sumBinary = () => {
-        let result = 0;
-        setRy(rx);
-        setRx(initialState);
-        
-        result = currentNumber(ry)+currentNumber(rx);
-        return result;
-    }
-    
 
     const handleOnClick = (e) => {
 
@@ -38,7 +26,6 @@ export const CalculatorApp = () => {
         }
 
         if (/[+/*-]/.test(value)) {
-            console.log('Suma actual '+sumBinary())
 
         }
         
