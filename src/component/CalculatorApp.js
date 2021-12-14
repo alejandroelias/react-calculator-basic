@@ -3,18 +3,20 @@ import './style.css'
 
 export const CalculatorApp = () => {
 
-    
+
     const numbers = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
     const operators = ['.', '=', '/', '*', '-', '+', 'C', 'AC'];
 
 
     const initialState = [0];
     const [rx, setRx] = useState(initialState);
-    const [ry, setRy] = useState(initialState);
+    const [ry, setRy] = useState(0);
+    const [ra, setRa] = useState(initialState);
 
-    
-    const currentNumber = (array) =>  parseInt(array.join(''));
-    
+
+    const currentNumber = (array) => parseInt(array.join(''));
+    let acumulador = 0
+
 
     const handleOnClick = (e) => {
 
@@ -26,14 +28,26 @@ export const CalculatorApp = () => {
 
         if (/[+/*-]/.test(value)) {
 
+            setRy(currentNumber(rx));
+
+            setRa(prevCount => prevCount + ry);
+
+
+            setRx(initialState);
+
+            console.log('ra: ', ra);
+
+
         }
-        
+
         if (/[=]/.test(value)) {
 
-            
+
         }
-        
+
     }
+
+    // console.log(currentNumber(rx));
 
     return (
         <>
