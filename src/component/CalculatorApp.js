@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { calculatorReducer } from '../reducer/calculatorReducer';
 import './style.css'
 
 export const CalculatorApp = () => {
