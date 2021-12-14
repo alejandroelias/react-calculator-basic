@@ -5,29 +5,55 @@ export const CalculatorApp = () => {
 
 
     const numbers = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
-    const operators = ['.', '=', '/', '*', '-', '+', 'C', 'AC'];
+    const operators = ['.', '/', '*', '-', '+'];
 
 
-    const handleOnClick = (e) => {
+    const initialState = "";
+    const [calc, setCalc] = useState(initialState);
+    const [result, setResult] = useState(initialState);
 
-        const { value } = e.target;
 
+    const updateCalc = (value) => {
+        if (
+            (operators.includes(value) && calc.slice === '') ||
+            (operators.includes(value) && operators.includes(calc.slice(-1)))
+        ) {
+            return;
+        }
+        setCalc(calc + value);
 
-
+        if (!operators.includes(value)) {
+            setResult(eval(calc + value).toString());
+        }
     }
 
-    // console.log(currentNumber(rx));
+    const calculate = () => {
+        setCalc(eval(calc).toString());
+    }
+
+    const deleteLast = () => {
+        if (calc === '') {
+            return;
+        }
+        const value = calc.slice(0, -1);
+        setCalc(value);
+    }
+
+    const deleteAll = () => {
+        setCalc(initialState);
+        setResult(initialState);
+    }
+    
+
+
 
     return (
         <>
             <div className="calculator">
-                <input
-                    type="text"
-                    className="calculator-screen"
-                    id="result"
-                    value='0'
-                    disabled
-                />
+                <div className="calculator-screen">
+                    {result ? <span> ({result}) </span> : ''}&nbsp;
+                    {calc || "0"}
+                </div>
                 <div className="calculator-keys">
 
                     {numbers.map((number, index) => (
@@ -35,9 +61,9 @@ export const CalculatorApp = () => {
                         <button
                             type="button"
                             key={index}
-                            value={number}
-                            onClick={(e) => handleOnClick(e)}
-                            className="btn btn-outline-dark">
+                            onClick={() => updateCalc(number.toString())}
+                            className="btn btn-outline-dark"
+                        >
                             {number}
                         </button>
                     ))}
@@ -46,12 +72,30 @@ export const CalculatorApp = () => {
                         <button
                             type="button"
                             key={index}
-                            value={operator}
-                            onClick={(e) => handleOnClick(e)}
-                            className="btn btn-outline-danger">
+                            onClick={() => updateCalc(operator)}
+                            className="btn btn-outline-danger"
+                        >
                             {operator}
                         </button>
                     ))}
+                    <button
+                        onClick={deleteLast}
+                        className="btn btn-outline-danger"
+                    >
+                        C
+                    </button>
+                    <button
+                    onClick={deleteAll}
+                        className="btn btn-outline-danger"
+                    >
+                        AC
+                    </button>
+                    <button
+                        onClick={calculate}
+                        className="btn btn-danger"
+                    >
+                        =
+                    </button>
                 </div>
             </div>
         </>
