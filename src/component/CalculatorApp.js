@@ -8,42 +8,11 @@ export const CalculatorApp = () => {
     const operators = ['.', '=', '/', '*', '-', '+', 'C', 'AC'];
 
 
-    const initialState = [0];
-    const [rx, setRx] = useState(initialState);
-    const [ry, setRy] = useState(0);
-    const [ra, setRa] = useState(initialState);
-
-
-    const currentNumber = (array) => parseInt(array.join(''));
-    let acumulador = 0
-
-
     const handleOnClick = (e) => {
 
         const { value } = e.target;
 
-        if (/[0-9]/.test(value) && rx.length < 9) {
-            setRx([...rx, value]);
-        }
 
-        if (/[+/*-]/.test(value)) {
-
-            setRy(currentNumber(rx));
-
-            setRa(prevCount => prevCount + ry);
-
-
-            setRx(initialState);
-
-            console.log('ra: ', ra);
-
-
-        }
-
-        if (/[=]/.test(value)) {
-
-
-        }
 
     }
 
@@ -56,7 +25,7 @@ export const CalculatorApp = () => {
                     type="text"
                     className="calculator-screen"
                     id="result"
-                    value={currentNumber(rx).toString()}
+                    value='0'
                     disabled
                 />
                 <div className="calculator-keys">
