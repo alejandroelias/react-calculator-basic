@@ -11,20 +11,6 @@ export const CalculatorApp = () => {
     const initialState = "";
     const [calc, setCalc] = useState(initialState);
     const [result, setResult] = useState(initialState);
-
-
-    const updateCalc = (value) => {
-        if (
-            (operators.includes(value) && calc.slice === '') ||
-            (operators.includes(value) && operators.includes(calc.slice(-1)))
-        ) {
-            return;
-        }
-        setCalc(calc + value);
-
-        if (!operators.includes(value)) {
-            setResult(eval(calc + value).toString());
-        }
     }
 
     const calculate = () => {
