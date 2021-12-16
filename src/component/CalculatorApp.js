@@ -4,23 +4,26 @@ import './style.css'
 export const CalculatorApp = () => {
 
 
-    const numbers = [7, 8, 9, 4, 5, 6, 1, 2, 3, 0];
+    const numbers = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0'];
     const operators = ['.', '/', '*', '-', '+'];
 
 
-    const initialState = "";
+    const initialState = '';
     const [calc, setCalc] = useState(initialState);
     const [result, setResult] = useState(initialState);
 
 
     const updateCalc = (value) => {
-        if (
-            (operators.includes(value) && calc.slice === '') ||
-            (operators.includes(value) && operators.includes(calc.slice(-1)))
-        ) {
-            return;
-        }
-        setCalc(calc + value);
+
+            if (
+                (operators.includes(value) && calc.slice === '') ||
+                (operators.includes(value) && operators.includes(calc.slice(-1)))
+            ) {
+                return;
+            }
+
+            setCalc(calc + value);
+
 
         if (!operators.includes(value)) {
             setResult(eval(calc + value).toString());
@@ -43,7 +46,7 @@ export const CalculatorApp = () => {
         setCalc(initialState);
         setResult(initialState);
     }
-    
+
 
 
 
@@ -85,7 +88,7 @@ export const CalculatorApp = () => {
                         C
                     </button>
                     <button
-                    onClick={deleteAll}
+                        onClick={deleteAll}
                         className="btn btn-outline-danger"
                     >
                         AC
