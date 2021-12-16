@@ -15,6 +15,10 @@ export const CalculatorApp = () => {
 
     const updateCalc = (value) => {
 
+            if (condition) {
+                
+            }
+            console.log(calc.length);
             if (
                 (operators.includes(value) && calc.slice === '') ||
                 (operators.includes(value) && operators.includes(calc.slice(-1)))
