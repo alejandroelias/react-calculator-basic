@@ -1,32 +1,44 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './style.css'
 
 export const CalculatorApp = () => {
 
 
+    
     const numbers = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0'];
     const operators = ['.', '/', '*', '-', '+'];
-
-
+    
+    
     const initialState = '';
     const [calc, setCalc] = useState(initialState);
     const [result, setResult] = useState(initialState);
-
+    
+    useEffect(() => {
+        console.log(/[^$]|[0-9]/.test(calc));
+        return () => {
+            console.log('Cambio en calc')
+        }
+    }, [calc])
 
     const updateCalc = (value) => {
 
-            if (condition) {
-                
-            }
-            console.log(calc.length);
-            if (
-                (operators.includes(value) && calc.slice === '') ||
-                (operators.includes(value) && operators.includes(calc.slice(-1)))
-            ) {
-                return;
-            }
+        // console.log(calc);
+        // console.log(/[^$]|[0-9]/.test(calc));
+        // console.log(calc.length <= 8);
+        
+        if (/[0-9]/.test(calc) && calc.length <= 8) {
 
-            setCalc(calc + value);
+
+
+        }
+        if (
+            (operators.includes(value) && calc.slice == '') ||
+            (operators.includes(value) && operators.includes(calc.slice(-1)))
+        ) {
+            return;
+        }
+
+        setCalc(calc + value);
 
 
         if (!operators.includes(value)) {
