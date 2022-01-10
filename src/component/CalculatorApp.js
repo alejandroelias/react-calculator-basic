@@ -3,8 +3,6 @@ import './style.css'
 
 export const CalculatorApp = () => {
 
-
-    
     const numbers = ['7', '8', '9', '4', '5', '6', '1', '2', '3', '0'];
     const operators = ['.', '/', '*', '-', '+'];
     
@@ -14,23 +12,18 @@ export const CalculatorApp = () => {
     const [result, setResult] = useState(initialState);
     
     useEffect(() => {
-        console.log(/[^$]|[0-9]/.test(calc));
-        return () => {
-            console.log('Cambio en calc')
+        if (/[0-9]/.test(calc) && calc.length <= 8) {
+
+            return () => {
+                console.log('Cambio en calc')
+            }
         }
+
     }, [calc])
 
     const updateCalc = (value) => {
 
-        // console.log(calc);
-        // console.log(/[^$]|[0-9]/.test(calc));
-        // console.log(calc.length <= 8);
-        
-        if (/[0-9]/.test(calc) && calc.length <= 8) {
 
-
-
-        }
         if (
             (operators.includes(value) && calc.slice == '') ||
             (operators.includes(value) && operators.includes(calc.slice(-1)))
